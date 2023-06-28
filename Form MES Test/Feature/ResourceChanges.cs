@@ -7,36 +7,33 @@ using System.Windows.Forms;
 using Camstar.WCF.Services;
 using Camstar.WCF.ObjectStack;
 using Camstar.Util;
-using Camstar.Exceptions;
 
 namespace Form_MES_Test.Feature
 {
-    public class FactoryTransaction
+    public class ResourceChanges
     {
         string ID = "Administrator";
         string PW = "Ocg123!";
 
         TextBox Log;
 
-        public FactoryTransaction(TextBox _Log)
+        public ResourceChanges(TextBox _Log)
         {
             Log = _Log;
-            
         }
 
-        public void FactoryAdd()
+        public void ResourceAdd()
         {
             try
             {
-                FactoryMaintService oCDOService = new FactoryMaintService(new UserProfile(ID, PW));
-                FactoryMaint oCDO = new FactoryMaint();
-                oCDO.ObjectChanges = new FactoryChanges { Name = "Factory 1", Description = "My First Factory" };
+                ResourceMaintService oCDOService = new ResourceMaintService(new UserProfile(ID, PW));
+                ResourceMaint oCDO = new ResourceMaint();
+                oCDO.ObjectChanges = new Camstar.WCF.ObjectStack.ResourceChanges { Name = "Resource 1", Description = "My First Resource" };
                 oCDOService.BeginTransaction();
                 oCDOService.New(oCDO);
                 oCDOService.ExecuteTransaction();
 
                 ResultStatus oResultstatus = oCDOService.CommitTransaction();
-
                 if (oResultstatus.IsSuccess)
                 {
                     Log.AppendText(oResultstatus.Message + System.Environment.NewLine);
@@ -49,20 +46,20 @@ namespace Form_MES_Test.Feature
             }
         }
 
-        public void FactoryUpdate()
+        public void ResourceUpdate()
         {
             try
             {
-                FactoryMaintService oCDOService = new FactoryMaintService(new UserProfile(ID, PW));
-                FactoryMaint oCDO = new FactoryMaint();
-                oCDO.ObjectToChange = new NamedObjectRef { Name = "Factory 1" };
+                ResourceMaintService oCDOService = new ResourceMaintService(new UserProfile(ID, PW));
+                ResourceMaint oCDO = new ResourceMaint();
+                oCDO.ObjectToChange = new NamedObjectRef { Name = "Resource 1" };
                 oCDOService.BeginTransaction();
                 oCDOService.Load(oCDO);
 
-                oCDO = new FactoryMaint();
+                oCDO = new ResourceMaint();
 
-                oCDO.ObjectChanges = new FactoryChanges();
-                oCDO.ObjectChanges.Description = "Factory 1 Modified";
+                oCDO.ObjectChanges = new Camstar.WCF.ObjectStack.ResourceChanges();
+                oCDO.ObjectChanges.Description = "Resource 1 Modified";
                 oCDOService.ExecuteTransaction(oCDO);
 
                 ResultStatus oResultStatus = oCDOService.CommitTransaction();
@@ -75,15 +72,15 @@ namespace Form_MES_Test.Feature
                 Log.AppendText(ex.Message + System.Environment.NewLine);
             }
         }
-
-        public void FactoryDelete()
+        
+        public void ResourceDelete()
         {
             try
             {
-                FactoryMaintService oCDOService = new FactoryMaintService(new UserProfile(ID, PW));
-                FactoryMaint oCDO = new FactoryMaint();
+                ResourceMaintService oCDOService = new ResourceMaintService(new UserProfile(ID, PW));
+                ResourceMaint oCDO = new ResourceMaint();
 
-                oCDO.ObjectToChange = new NamedObjectRef { Name = "Factory 1" };
+                oCDO.ObjectToChange = new NamedObjectRef { Name = "Resource 1" };
                 oCDOService.BeginTransaction();
                 oCDOService.Delete(oCDO);
                 oCDOService.ExecuteTransaction();
@@ -92,6 +89,21 @@ namespace Form_MES_Test.Feature
 
                 if (oResultStatus.IsSuccess) Log.AppendText(oResultStatus.Message + System.Environment.NewLine);
                 else throw new Exception(oResultStatus.ExceptionData.Description);
+            }
+            catch (Exception ex)
+            {
+                Log.AppendText(ex.Message + System.Environment.NewLine);
+            }
+        }
+
+        public void ResourceGet()
+        {
+            try
+            {
+                ResourceMaintService oCDOService = new ResourceMaintService(new UserProfile(ID, PW));
+                ResourceMaint oCDO = new ResourceMaint();
+
+
             }
             catch (Exception ex)
             {

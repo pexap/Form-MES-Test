@@ -17,18 +17,17 @@ namespace Form_MES_Test
 {
     public partial class Main : Form
     {
-        string ID = "Administrator";
-        string PW = "Ocg123!";
-
-        ContainerTransaction ConTransaction;
-        FactoryTransaction FacTransaction;
+        ContainerChanges ConTransaction;
+        Feature.FactoryChanges FacTransaction;
+        Feature.ResourceChanges ResTransaction;
 
         public Main()
         {
             InitializeComponent();
 
-            ConTransaction = new ContainerTransaction(textBox_Log);
-            FacTransaction = new FactoryTransaction (textBox_Log);
+            ConTransaction = new ContainerChanges(textBox_Log);
+            FacTransaction = new Feature.FactoryChanges(textBox_Log);
+            ResTransaction = new Feature.ResourceChanges(textBox_Log);
         }
 
         private void btn_MoveStd(object sender, EventArgs e)
@@ -49,6 +48,26 @@ namespace Form_MES_Test
         private void btn_FactoryDelete(object sender, EventArgs e)
         {
             FacTransaction.FactoryDelete();
+        }
+
+        private void btn_ResourceAdd(object sender, EventArgs e)
+        {
+            ResTransaction.ResourceAdd();
+        }
+
+        private void btn_ResourceUpdate(object sender, EventArgs e)
+        {
+            ResTransaction.ResourceUpdate();
+        }
+
+        private void btn_ResourceDelete(object sender, EventArgs e)
+        {
+            ResTransaction.ResourceDelete();
+        }
+
+        private void btn_ResourceGet(object sender, EventArgs e)
+        {
+
         }
     }
 }

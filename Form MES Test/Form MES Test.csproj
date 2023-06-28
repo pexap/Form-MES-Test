@@ -58,8 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Feature\ContainerTransaction.cs" />
-    <Compile Include="Feature\FactoryTransaction.cs" />
+    <Compile Include="Feature\ContainerChanges.cs" />
+    <Compile Include="Feature\FactoryChanges.cs" />
+    <Compile Include="Feature\ResourceChanges.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

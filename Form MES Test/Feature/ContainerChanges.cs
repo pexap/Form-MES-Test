@@ -11,14 +11,14 @@ using Camstar.Exceptions;
 
 namespace Form_MES_Test.Feature
 {
-    public class ContainerTransaction
+    public class ContainerChanges
     {
         string ID = "Administrator";
         string PW = "Ocg123!";
 
         TextBox Log;
 
-        public ContainerTransaction(TextBox _Log)
+        public ContainerChanges(TextBox _Log)
         {
             Log = _Log;
         }
