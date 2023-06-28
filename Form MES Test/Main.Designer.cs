@@ -1,6 +1,6 @@
 ﻿namespace Form_MES_Test
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -64,11 +64,11 @@
             // 
             this.textBox_Log.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox_Log.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Log.Location = new System.Drawing.Point(69, 270);
+            this.textBox_Log.Location = new System.Drawing.Point(26, 270);
             this.textBox_Log.Multiline = true;
             this.textBox_Log.Name = "textBox_Log";
             this.textBox_Log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_Log.Size = new System.Drawing.Size(583, 89);
+            this.textBox_Log.Size = new System.Drawing.Size(745, 155);
             this.textBox_Log.TabIndex = 2;
             this.textBox_Log.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -106,7 +106,7 @@
             this.button_DelFactory.UseVisualStyleBackColor = true;
             this.button_DelFactory.Click += new System.EventHandler(this.btn_FactoryDelete);
             // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -118,7 +118,7 @@
             this.Controls.Add(this.button_AddFactory);
             this.Controls.Add(this.button_MoveStd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
